@@ -164,5 +164,5 @@ if (interactive()) {
   # In a production (non-interactive) environment, use the PORT provided by Render.
   shiny::runApp(list(ui = ui, server = server), 
                 host = "0.0.0.0", 
-                port = as.numeric(Sys.getenv("PORT", 3838)))
+                port = as.numeric(Sys.getenv("PORT", 10000)))
 }

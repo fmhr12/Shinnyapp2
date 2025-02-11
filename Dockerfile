@@ -10,9 +10,12 @@ RUN apt-get update && apt-get install -y \
 # Install extra R packages that are not already included in the image.
 RUN R -e "install.packages(c('shinythemes', 'survival', 'riskRegression', 'ggplot2', 'prodlim', 'plotly'), repos='https://cran.rstudio.com/')"
 
+# Copy the app files into the image.
 COPY . /app
 WORKDIR /app
 
-EXPOSE 8080
+# Expose port 10000 (Render's default port).
+EXPOSE 10000
 
-CMD R -e "shiny::runApp('/app', host='0.0.0.0', port=as.numeric(Sys.getenv('PORT', 8080)))"
+# Run the Shiny app.
+CMD R -e "shiny::runApp('/app', host='0.0.0.0', port=as.numeric(Sys.getenv('PORT', 10000)))"

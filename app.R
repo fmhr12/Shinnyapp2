@@ -4,9 +4,7 @@ library(shiny)
 library(shinythemes)
 library(survival)
 library(riskRegression)
-library(dplyr)
 library(ggplot2)
-library(readxl)
 library(prodlim)
 library(plotly)   # For interactive plots
 

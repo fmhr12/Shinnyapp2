@@ -160,4 +160,11 @@ server <- function(input, output, session) {
   })
 }
 
-shinyApp(ui = ui, server = server)
+if (interactive()) {
+  shinyApp(ui = ui, server = server)
+} else {
+  # In a production (non-interactive) environment, use the PORT provided by Render.
+  shiny::runApp(list(ui = ui, server = server), 
+                host = "0.0.0.0", 
+                port = as.numeric(Sys.getenv("PORT", 3838)))
+}

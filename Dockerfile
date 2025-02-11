@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 # Install extra R packages that are not already included in the image.
-RUN R -e "install.packages(c('shinythemes', 'survival', 'riskRegression', 'dplyr', 'fastshap', 'shapviz', 'ggplot2', 'readxl', 'prodlim', 'cluster', 'plotly'), repos='https://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shinythemes', 'survival', 'riskRegression', 'ggplot2', 'prodlim', 'plotly'), repos='https://cran.rstudio.com/')"
 
 COPY . /app
 WORKDIR /app
